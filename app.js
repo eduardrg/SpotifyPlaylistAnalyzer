@@ -30,7 +30,6 @@ var tokenGetter = function() {
 
 };
 
-
 var myApp = angular.module('myApp', []);
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
@@ -41,10 +40,12 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
 
   $scope.getTrackPopularities = function() {
     if ($scope.playlistURL != "") {
+
       // Convert a playlist url of the form:
       //  https://play.spotify.com/user/{user_id}/playlist/{playlist_id}
       // into an API url of the form:
       //  https://api.spotify.com/v1/users/{user_id}/playlists/{playlist_id}/tracks
+
       var APIurl = $scope.playlistURL.replace(/play/i, 'api');
       APIurl = APIurl.replace(/.com\/user/i, '.com/v1/users/');
       APIurl = APIurl.replace(/playlist/i, 'playlists');
@@ -53,27 +54,28 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
       $httpProvider.defaults.headers.get = { 'Authorization' : 'Bearer ' + AccessToken };
 
       $http.get(APIurl).
-        success(function(response){
-          rating = avgPopularity(response)
-          if (rating > 50) {
-            $scope.result = rating + "% : You are a pop culture slave."
-          } else {
-            $scope.result = rating + "% : You have some hipster cred."
+        success(function(response) {
+
+          // Average the popularities
+
+          for (i = 0; i < response.length; i++) {
+            rating += response[i];
           }
+
+          rating = rating / response.length;
+
+          if (rating > 50) {
+            $scope.result = rating + "% : You are a pop culture slave.";
+          } else {
+            $scope.result = rating + "% : You have some hipster cred.";
+          }
+
         }).
+        
         error(function() {
-          confirm('Error. Please check your playlist URL.')
+          confirm('Error. Please check your playlist URL.');
         });
     }
   };
-
-  // Average the popularities
-  var avgPopularity = function(popularities) {
-    var sum = 0;
-    for (i = 0; i < popularities.length; i++) {
-      sum += popularities[i];
-    }
-    return sum / popularities.length;
-  }
 
 });
