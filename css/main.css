@@ -1,0 +1,172 @@
+/* Import fonts */
+   @import url(http://fonts.googleapis.com/css?family=Raleway:300);
+   @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+
+/* General page body formatting */
+   body {
+      font-family: Lato, "Helvetica Neue", "Helvetica", sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+   }
+
+      /* Links */
+      a {
+         color: #0000AA;
+         text-decoration: none;
+      }
+
+      a:hover, a:focus {
+         color: #0000EE;
+      }
+
+      /* Headings */
+      h1, h2, h3 {
+         font-family: Raleway, "Helvetica Neue", "Helvetica", sans-serif;
+         font-weight: 300;
+      }
+
+      h1 {
+         font-size: 300%;
+         margin: 0;
+      }
+
+      h2 {
+         color: #505050;
+         font-size: 150%;
+         margin: 0;
+      }
+
+      h3 {
+         color: #505050;
+         font-size: 125%;
+      }
+
+/* Main page content */
+   main {
+      background-image: url("../img/ricepaper_v3.png");
+      opacity: 0.9;
+      padding: 0;
+
+   }
+
+   .container-fluid {
+      margin: 0;
+      padding: 0;
+   }
+
+   .row {
+      margin: 0;
+      padding: 0;
+   }
+
+/* Page header */
+   header {
+      background-color: #FA5A0F;
+      border-bottom-color: #EA4A00;
+      border-bottom-style: solid;
+      border-bottom-width: 5px;
+      color: #FFFFFF;
+      padding: 1em;
+   }
+
+   /* Navigation */
+      nav ul {
+         padding: 0;
+         margin: 0;
+      }
+
+      nav li {
+         list-style-type: none;
+         display: inline-block;
+         margin-right: 1em;
+      }
+
+      nav a {
+         color: #55E;
+      }
+
+      nav a:hover, nav a:focus {
+         color: #00E;
+      }
+
+/* Form section */
+   button[type=submit] {
+      width: 100%;
+      height: 50px;
+   }
+
+   input[type=text] {
+      height: 50px;
+   }
+
+   /* Visually hide labels but allow screen readers to access them */
+   label.hidden { 
+      position: absolute !important; 
+      clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ 
+      clip: rect(1px, 1px, 1px, 1px); 
+   } 
+
+/* Menu section */
+   #menu-section {
+      background-color: rgba(207, 205, 140, 0.5);
+      padding: 1em;
+   }
+
+   /* Menu items and descriptions */
+      dt {
+         font-weight: 400;
+      }
+
+      dd {
+         font-size: 80%;
+         font-style: italic;
+         margin-bottom: 1em;
+         margin-left: 1em;
+      }
+
+/* Page footer */
+   footer {
+      background-color: #FC892F;
+      border-top-color: #EC791F;
+      border-top-style: solid;
+      border-top-width: 5px;
+      font-size: 80%;
+      padding: 1em;
+      text-align: right;
+   }
+
+   /* Owner & contact info */
+      address {
+         font-style: italic;
+      }
+
+/* Style for screens larger than 992px */
+@media (min-width: 992px) {
+   body {
+      background-image: url("../img/background.jpg");
+      background-attachment: fixed;
+      background-size: cover;
+      font-size: 18px;
+    }
+
+   .container-fluid {
+      margin: 20px;
+      margin-left: 10%;
+      margin-right: 10%;
+      padding:0;
+   }
+
+   header {
+      position: relative;
+   }
+
+   header p {
+      display: block;
+   }
+
+   nav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+   }
+}

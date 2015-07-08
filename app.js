@@ -1,31 +1,16 @@
-var data;
-var baseUrl = 'https://api.spotify.com/v1/search?type=track&query='
-var myApp = angular.module('myApp', [])
+var myApp = angular.module('myApp', []);
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
-  $scope.audioObject = {}
-  $scope.getSongs = function() {
+  var tracks;
+  var baseUrl = 'https://api.spotify.com/v1/search?type=track&query=';
+  $scope.playlist-URL;
+  $scope.getTracks = function() {
     $http.get(baseUrl + $scope.track).success(function(response){
       data = $scope.tracks = response.tracks.items
       
     })
   }
-  $scope.play = function(song) {
-    if($scope.currentSong == song) {
-      $scope.audioObject.pause()
-      $scope.currentSong = false
-      return
-    }
-    else {
-      if($scope.audioObject.pause != undefined) $scope.audioObject.pause()
-      $scope.audioObject = new Audio(song);
-      $scope.audioObject.play()  
-      $scope.currentSong = song
-    }
+  var avgPopularity = function(data) {
+    
   }
 })
-
-// Add tool tips to anything with a title property
-$('body').tooltip({
-    selector: '[title]'
-});
