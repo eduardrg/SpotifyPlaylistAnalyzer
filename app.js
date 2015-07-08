@@ -19,18 +19,13 @@ var tokenGetter = function() {
   // need access token
   } else {
     if (confirm('You must sign in to Spotify to continue.')) {
-      getAccess();
+      var CLIENT_ID = 'fa96e83e7cfd46759a5179a204181039';
+      var successURL = currentURL;
+      var scopes = encodeURIComponent('playlist-read-private playlist-read-collaborative');
+      window.location.assign('https://accounts.spotify.com/authorize' +
+          '?response_type=token' + '&client_id=' + CLIENT_ID + '&scope='
+          + scopes + '&redirect_uri=' + successURL);
     }
-  }
-
-  // Get an access token for the user's playlists
-  var getAccess = function() {
-    var CLIENT_ID = 'fa96e83e7cfd46759a5179a204181039';
-    var successURL = currentURL;
-    var scopes = encodeURIComponent('playlist-read-private playlist-read-collaborative');
-    window.location.assign('https://accounts.spotify.com/authorize' +
-        '?response_type=token' + '&client_id=' + CLIENT_ID + '&scope='
-        + scopes + '&redirect_uri=' + successURL);
   }
 
 };
