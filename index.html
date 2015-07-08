@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top" ng-app="myApp" ng-controller="myCtrl">
+<html id="top">
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,21 +12,15 @@
       <!-- Bootstrap.js -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <!-- Page style -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/main.css">
-      <script src="app.js"></script>
+      <<script src="app.js"></script>
       <link rel="icon" href="img/pizza-icon.png">
    </head>
-   <body>
-      <main class="container-fluid" ng-co>
+   <body onLoad="tokenGetter()">
+      <main class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
          <header>
             <h1>SPA: Spotify Playlist Analyzer</h1>
-            <nav role="navigation">
-               <ul>
-                  <li><a href="#info-section">location</a></li>
-                  <li><a href="#menu-section">menu</a></li>
-                  <li><a href="#about-section">about</a></li>
-               </ul>
-            </nav>
          </header>
          <div id="form-section" class="row">
             <form class="form-group">

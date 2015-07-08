@@ -2,35 +2,39 @@
 
 var currentURL = window.location.href;
 var startOfToken = currentURL.indexOf('access_token=');
-var AccessToken;
+var AccessToken = "";
 
-// have access token
-if (startOfToken > 0) {
-    startOfToken += 13;
-    var endOfToken = currentURL.indexOf('&token_type');
-    AccessToken = currentURL.substring(startOfToken, endOfToken);
+var tokenGetter = function() {
 
-// authorization failed
-} else if (currentURL.indexOf('error') > 0) {
-  window.location.assign('https://students.washington.edu/eduardrg/info343/spotify-challenge/index.html');
+  // have access token
+  if (startOfToken > 0) {
+      startOfToken += 13;
+      var endOfToken = currentURL.indexOf('&token_type');
+      AccessToken = currentURL.substring(startOfToken, endOfToken);
 
-// need access token
-} else {
-  var continue = confirm('You must sign in to Spotify to continue.');
-  if (continue) {
-    getAccess();
+  // authorization failed
+  } else if (currentURL.indexOf('error') > 0) {
+    window.location.assign('https://students.washington.edu/eduardrg/info343/spotify-challenge/index.html');
+
+  // need access token
+  } else {
+    if (confirm('You must sign in to Spotify to continue.')) {
+      getAccess();
+    }
   }
-}
 
-// Get an access token for the user's playlists
-var getAccess = function() {
-  var CLIENT_ID = 'fa96e83e7cfd46759a5179a204181039';
-  var successURL = currentURL;
-  var scopes = encodeURIComponent('playlist-read-private playlist-read-collaborative');
-  window.location.assign('https://accounts.spotify.com/authorize' +
-      '?response_type=token' + '&client_id=' + CLIENT_ID + '&scope='
-      + scopes + '&redirect_uri=' + successURL);
-}
+  // Get an access token for the user's playlists
+  var getAccess = function() {
+    var CLIENT_ID = 'fa96e83e7cfd46759a5179a204181039';
+    var successURL = currentURL;
+    var scopes = encodeURIComponent('playlist-read-private playlist-read-collaborative');
+    window.location.assign('https://accounts.spotify.com/authorize' +
+        '?response_type=token' + '&client_id=' + CLIENT_ID + '&scope='
+        + scopes + '&redirect_uri=' + successURL);
+  }
+
+};
+
 
 var myApp = angular.module('myApp', []);
 
@@ -52,7 +56,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
       APIurl = APIurl + '/tracks&fields=items(track.popularity)';
 
       $httpProvider.defaults.headers.get = { 'Authorization' : 'Bearer ' + AccessToken };
-      
+
       $http.get(APIurl).
         success(function(response){
           rating = avgPopularity(response)
