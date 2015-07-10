@@ -14,31 +14,39 @@
       <!-- Page style -->
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/main.css">
-      <<script src="app.js"></script>
+      <script src="app.js"></script>
       <link rel="icon" href="img/pizza-icon.png">
    </head>
-   <body onLoad="tokenGetter()">
-      <main class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+   <body>
+      <main class="container-fluid" ng-app="myApp" ng-controller="myCtrl" ng-init="tokenGetter()">
          <header>
-            <h1>SPA: Spotify Playlist Analyzer</h1>
+            <h1 id="full">SPA: Spotify Playlist Analyzer</h1>
+            <h1 id="trunc">SPA</h1>
          </header>
          <div id="form-section" class="row">
-            <form class="form-group">
+            <form name="playlistForm">
+              <div class="form-group col-md-12 notice">
+                <ul>
+                  <li ng-class="{'hidden' : haveToken()}">Please log-in to Spotify to proceed.</li>
+                </ul>
+              </div>
               <div class="form-group col-md-10">
                  <label for="playlistURL" class="hidden">Playlist URL:</label>
-                 <input type="text" ng-model="playlistURL" name="playlistURL" class="form-control"></input>
+                 <input type="text" ng-model="playlistURL" name="playlistURL" class="form-control" placeholder="https://play.spotify.com/user/{user_id}/playlist/{playlist_id}" required></input>
               </div>
               <div class="form-group col-md-2">
-                 <button type="submit" class="btn btn-primary" ng-click="getTrackPopularities()">Analyze</button>
+                 <button type="submit" class="btn btn-primary" ng-click="getTrackPopularities()" ng-disabled="!haveToken()">Analyze</button>
               </div>
             </form>
          </div>
          <div id="results" class="row">
             <div class="col-md-6">
-               <h2>Result:</h3>
+              <h2>Title</h2>
+              <h3>{{playlistName}}</h3>
             </div>
             <div class="col-md-6">
-               <h2>{{result}}</h3>
+               <h2>Result</h2>
+               <h3>{{result}}</h3>
             </div>
          </div>
          <footer>
