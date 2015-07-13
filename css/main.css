@@ -44,6 +44,10 @@
          font-weight: 700;
       }
 
+      #results h3 {
+         color: black;
+      }
+
 /* Main page content */
    main {
       background-image: url("../img/paper-texture.jpg");
