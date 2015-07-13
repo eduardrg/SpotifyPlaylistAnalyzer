@@ -23,11 +23,11 @@
             <h1 id="full">SPA: Spotify Playlist Analyzer</h1>
             <h1 id="trunc">SPA</h1>
          </header>
-         <p>Enter a playlist to see the average popularity of each track.</p>
          <div id="form-section" class="row">
             <form name="playlistForm">
               <div class="form-group col-md-12 notice">
                 <ul>
+                  <li id="description">Enter a playlist to see the average popularity of each track.</li>
                   <li ng-class="{'hidden' : haveToken()}">Please log-in to Spotify to proceed.</li>
                   <li ng-show="playlistForm.playlistURL.$touched && playlistForm.playlistURL.$pristine">Please enter a Spotify playlist URL.</li>
                   <li ng-show="playlistForm.playlistURL.$touched && playlistForm.playlistURL.$error.minlength">Playlist URL is too short.</li>

@@ -57,6 +57,11 @@
 
    }
 
+   /* Description of what the page does */
+   li#description {
+      color:#505050;
+   }
+
    .container-fluid {
       margin: 0;
       padding: 0;
