@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="top">
+<html>
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/main.css">
       <script src="app.js"></script>
-      <link rel="icon" href="img/pizza-icon.png">
+      <link rel="icon" href="img/percent-icon.png">
    </head>
    <body>
       <main class="container-fluid" ng-app="myApp" ng-controller="myCtrl" ng-init="tokenGetter()">
@@ -28,11 +28,13 @@
               <div class="form-group col-md-12 notice">
                 <ul>
                   <li ng-class="{'hidden' : haveToken()}">Please log-in to Spotify to proceed.</li>
+                  <li ng-show="playlistForm.playlistURL.$touched && playlistForm.playlistURL.$pristine">Please enter a Spotify playlist URL.</li>
+                  <li ng-show="playlistForm.playlistURL.$touched && playlistForm.playlistURL.$error.minlength">Playlist URL is too short.</li>
                 </ul>
               </div>
               <div class="form-group col-md-10">
                  <label for="playlistURL" class="hidden">Playlist URL:</label>
-                 <input type="text" ng-model="playlistURL" name="playlistURL" class="form-control" placeholder="https://play.spotify.com/user/{user_id}/playlist/{playlist_id}" required></input>
+                 <input type="text" ng-model="playlistURL" name="playlistURL" class="form-control" placeholder="https://play.spotify.com/user/{user_id}/playlist/{playlist_id}" ng-minlength="44" required></input>
               </div>
               <div class="form-group col-md-2">
                  <button type="submit" class="btn btn-primary" ng-click="getTrackPopularities()" ng-disabled="!haveToken()">Analyze</button>
@@ -54,9 +56,6 @@
                <address>
                   Made by <a href="mailto:eduardrg@uw.edu">Eduard Grigoryan</a> in 2015
                </address>
-            </p>
-            <p>
-               <a href="#top">Back to Top &uarr;</a>
             </p>
          </footer>
       </main>

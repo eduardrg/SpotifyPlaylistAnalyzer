@@ -73,7 +73,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
           for (i = 0; i < response.items.length; i++) {
             rating += response.items[i].track.popularity;
           }
-          rating = rating / response.items.length;
+          rating = Math.round10(rating / response.items.length);
           
           if (rating > 50) {
             $scope.result = rating + "% : You are a pop culture slave.";

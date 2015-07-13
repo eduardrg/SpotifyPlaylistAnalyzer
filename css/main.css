@@ -1,12 +1,12 @@
 /* Import fonts */
-   @import url(http://fonts.googleapis.com/css?family=Raleway:300);
+   @import url(http://fonts.googleapis.com/css?family=Merriweather:900,700);
    @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 
 /* General page body formatting */
    body {
       font-family: Lato, "Helvetica Neue", "Helvetica", sans-serif;
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 900;
       font-color: white;
    }
 
@@ -22,8 +22,8 @@
 
       /* Headings */
       h1, h2, h3 {
-         font-family: Raleway, "Helvetica Neue", "Helvetica", sans-serif;
-         font-weight: 300;
+         font-family: Meriweather, "Times New Roman", serif;
+         font-weight: 900;
       }
 
       h1 {
@@ -34,18 +34,21 @@
       h2 {
          color: #505050;
          font-size: 150%;
+         font-weight: 700;
          margin: 0;
       }
 
       h3 {
          color: #505050;
          font-size: 125%;
+         font-weight: 700;
       }
 
 /* Main page content */
    main {
-      background-image: url("../img/ricepaper_v3.png");
-      opacity: 0.9;
+      background-image: url("../img/paper-texture.jpg");
+      background-size: default;
+      opacity: 1;
       padding: 0;
 
    }
@@ -99,16 +102,8 @@
       color:red;
    }
 
-   /* Form section */
-      #form-section {
-         padding: 2em;
-      }
-
-   /* Results section */
-   .btn-primary  {
-     color: #fff;
-     background-color: #1A212B;
-     border-color: #727375;
+   #form-section {
+      padding: 2em;
    }
 
 /* Page footer */
@@ -149,18 +144,10 @@
     }
 
    .container-fluid {
-      margin: 20px;
+      margin: 50px;
       margin-left: 20%;
       margin-right: 20%;
       padding:0;
-   }
-
-   header {
-      position: relative;
-   }
-
-   header p {
-      display: block;
    }
 
    h1#trunc {
