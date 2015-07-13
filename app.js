@@ -1,5 +1,3 @@
-
-
 var myApp = angular.module('myApp', []);
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
@@ -21,15 +19,13 @@ var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
 
     // authorization failed
     } else if (currentURL.indexOf('error') > 0) {
-      window.location.assign('http://localhost:8000/');
-      // window.location.assign('https://students.washington.edu/eduardrg/info343/spotify-challenge/index.html');
+      window.location.assign('https://students.washington.edu/eduardrg/info343/spotify-challenge/index.html');
 
     // need access token
     } else {
       if (confirm('You must sign in to Spotify to continue.')) {
         var CLIENT_ID = 'fa96e83e7cfd46759a5179a204181039';
-        var successURL = 'http://localhost:8000/';
-        // var successURL = 'https://students.washington.edu/eduardrg/info343/spotify-challenge/index.html';
+        var successURL = 'https://students.washington.edu/eduardrg/info343/spotify-challenge/index.html';
         var scopes = encodeURIComponent('playlist-read-private playlist-read-collaborative');
         window.location.assign('https://accounts.spotify.com/authorize' +
             '?response_type=token' + '&client_id=' + CLIENT_ID + '&scope='
