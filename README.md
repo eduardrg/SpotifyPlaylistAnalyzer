@@ -3,6 +3,6 @@ SPA is a simple Spotify API client that tells you whether your playlist is total
 
 Created for INFO 343: Client-Side Web Development.
 
-http://eduardrg.github.io/spotify-challenge/
+http://eduardrg.github.io/SpotifyPlaylistAnalyzer/
 
 ![Screenshot of the app indicating that a playlist is mainstream](https://github.com/eduardrg/SpotifyPlaylistAnalyzer/blob/master/SPA_Screenshot.PNG)
